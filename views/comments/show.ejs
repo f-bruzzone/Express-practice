@@ -17,6 +17,9 @@
     </h3>
 
     <a href="/comments">Back to comments</a>
+    <form action="/comments/<%= comment.id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
 </body>
 
 </html>

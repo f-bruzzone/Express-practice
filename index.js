@@ -5,7 +5,7 @@ const app = express();
 const path = require('path');
 
 
-const comments = [
+let comments = [
     {
         id: uuid(),
         username: 'user1',
@@ -60,6 +60,13 @@ app.patch('/comments/:id', (req, res) => {
     const foundComment = comments.find(c => c.id === id);
     foundComment.comment = newCommentText;
     res.redirect('/comments');
+})
+
+app.delete('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    comments = comments.filter(c => c.id !== id);
+    console.log(comments);
+    res.redirect('/comments')
 })
 
 app.post('/comments', (req, res) => {
